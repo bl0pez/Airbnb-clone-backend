@@ -6,10 +6,10 @@ const jwt = require('jsonwebtoken');
  * @param {*} email - email del usuario
  * @returns - retorna el token
  */
-const generarJWT = (id, email) => {
+const generarJWT = ( _id ) => {
 
     return new Promise((resolve, reject) => {
-        const payload = { id, email};
+        const payload = { _id };
 
         jwt.sign(payload, process.env.JWT_SECRET, {
             expiresIn: '2h'

@@ -29,7 +29,7 @@ const login = async(req, res) => {
 
     try {
 
-        const userDoc = await User.findOne({ email });
+        const userDoc = await User.findOne({ email }).select("+password");
 
         // Validar si el usuario existe
         if (!userDoc) {
@@ -49,10 +49,15 @@ const login = async(req, res) => {
         }
 
         //Generar el JWT
-        const token = await generarJWT(userDoc.id, userDoc.email);
+        const token = await generarJWT(userDoc._id);
 
         res.cookie('token', token).json({
             msj: "Login correcto",
+            user: {
+                _id: userDoc._id,
+                name: userDoc.name,
+                email: userDoc.email,
+            },
         })
 
 
@@ -68,7 +73,29 @@ const login = async(req, res) => {
 
 }
 
+const renewToken = async(req, res) => {
+    try {
+        
+
+        res.json({
+            msj: "Renew token",
+            user: {
+                _id: req.user._id,
+                name: req.user.name,
+                email : req.user.email,
+            }
+        });
+
+
+    } catch (error) {
+        res.status(500).json({
+            msj: "Internal server error"
+        })
+    }
+}
+
 module.exports = {
     register,
     login,
+    renewToken,
 }

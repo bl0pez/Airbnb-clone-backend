@@ -6,3 +6,6 @@ Este proyecto es un clon de de airbnb, el cual permite a los usuarios publicar s
 ## Tecnologías
 - NodeJS
 - Express
+- Bcryptjs
+
+## Endpoints

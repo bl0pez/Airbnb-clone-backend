@@ -7,6 +7,7 @@ Este proyecto es un clon de de airbnb, el cual permite a los usuarios publicar s
 - NodeJS
 - Express
 - Bcryptjs
+- Jsonwebtoken
 
 ## Endpoints
 - Autenticación de usuarios - URL_BASE: http://localhost:3000/
@@ -18,3 +19,6 @@ Este proyecto es un clon de de airbnb, el cual permite a los usuarios publicar s
         - password: string
 
   - POST /api/auth/login
+    - Body
+      - email: string
+      - password: string

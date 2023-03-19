@@ -4,6 +4,8 @@ const dotenv = require('dotenv');
 dotenv.config();
 const app = express();
 
+const { dbConnection } = require('./config/dbConnection');
+
 //Middleware
 app.use(cors({
     credentials: true,
@@ -11,6 +13,9 @@ app.use(cors({
 }));
 
 app.use(express.json());
+
+//Base de datos
+dbConnection();
 
 //Routes
 app.use('/api', require('./routes/auth'));

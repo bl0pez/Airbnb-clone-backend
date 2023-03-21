@@ -94,8 +94,15 @@ const renewToken = async(req, res) => {
     }
 }
 
+const logout = async(req, res) => {
+    res.cookie('token', '').json({
+        msj: "Logout correcto"
+    })
+}
+
 module.exports = {
     register,
     login,
     renewToken,
+    logout
 }

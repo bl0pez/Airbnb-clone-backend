@@ -35,7 +35,8 @@ const uploadByFile = async (req, res) => {
 
        res.json({
             ok: true,
-       }) 
+            msg: files.map(file => file.filename)
+       }); 
 
         
     } catch (error) {
